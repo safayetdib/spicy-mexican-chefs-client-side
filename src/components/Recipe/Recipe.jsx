@@ -8,8 +8,6 @@ const Recipe = ({ recipe }) => {
 	const { recipe_name, recipe_picture, ingredients, cooking_method, rating } =
 		recipe;
 
-	console.log(recipe);
-
 	return (
 		<article className="mx-auto mt-4 flex h-full max-w-md flex-col justify-between rounded-md  border bg-white shadow-lg duration-300 hover:shadow-sm">
 			<div>

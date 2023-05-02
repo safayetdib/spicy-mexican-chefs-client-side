@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
+	const { signIn } = useContext(AuthContext);
+
+	const handleLogin = (e) => {
+		e.preventDefault();
+
+		const form = e.target;
+		const email = form.email.value;
+		const password = form.password.value;
+
+		signIn(email, password)
+			.then((res) => {
+				const userData = res.user;
+				console.log(userData);
+				// navigate(from, { replace: true });
+			})
+			.catch((err) => console.log(err));
+	};
+
 	return (
 		<main className="flex w-full flex-col items-center justify-center px-4">
 			<div className="mb-20 mt-10 w-full max-w-md space-y-8 rounded border px-8 py-6 text-gray-600 shadow">
@@ -20,28 +39,36 @@ const Login = () => {
 						</p>
 					</div>
 				</div>
-				<form onSubmit={(e) => e.preventDefault()}>
+				<form onSubmit={handleLogin}>
+					{/* EMAIL */}
 					<div>
 						<label className="font-medium">Email</label>
 						<input
 							type="email"
+							name="email"
 							required
 							className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-red-accent"
 						/>
 					</div>
+					{/* PASSWORD */}
 					<div className="mt-4">
 						<label className="font-medium">Password</label>
 						<input
 							type="password"
+							name="password"
 							required
 							className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-red-accent"
 						/>
 					</div>
-					<button className="mt-6 w-full rounded-lg bg-red-accent px-4 py-2 font-medium text-white duration-150 hover:bg-red-hover active:bg-red-active">
+					{/* LOGIN BUTTON */}
+					<button
+						type="submit"
+						className="mt-6 w-full rounded-lg bg-red-accent px-4 py-2 font-medium text-white duration-150 hover:bg-red-hover active:bg-red-active">
 						Log in
 					</button>
 				</form>
 				<div className="text-center">
+					{/* FORGOT PASSWORD */}
 					<Link to="/" className="text-red-accent hover:text-red-hover">
 						Forgot password?
 					</Link>
@@ -53,6 +80,7 @@ const Login = () => {
 					</p>
 				</div>
 				<div className="space-y-4 py-3 text-sm font-medium">
+					{/* GOOGLE SIGN IN */}
 					<button className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
 						<svg
 							className="h-5 w-5"
@@ -85,7 +113,7 @@ const Login = () => {
 						</svg>
 						Continue with Google
 					</button>
-
+					{/* GITHUB SIGN IN */}
 					<button className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
 						<svg
 							className="h-5 w-5"
