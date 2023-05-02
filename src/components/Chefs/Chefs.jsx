@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import ChefCard from './ChefCard';
 
-const Chefs = () => {
+const Chefs = ({ chefsData }) => {
 	return (
 		<section className="py-14">
 			<div className="mx-auto max-w-screen-xl px-4 text-center md:px-8">
@@ -15,9 +16,9 @@ const Chefs = () => {
 				</div>
 				<div className="mt-12">
 					<ul className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-						<ChefCard />
-						<ChefCard />
-						<ChefCard />
+						{chefsData.map((data, index) => (
+							<ChefCard key={index} data={data} />
+						))}
 					</ul>
 				</div>
 			</div>

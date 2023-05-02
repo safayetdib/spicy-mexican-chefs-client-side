@@ -4,12 +4,15 @@ import Chefs from '../../components/Chefs/Chefs';
 import Testimonials from '../../components/Testimonials/Testimonials';
 import Newsletter from '../../components/Newletter/Newsletter';
 import Trusted from '../../components/Trusted/Trusted';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
+	const chefsData = useLoaderData();
+
 	return (
 		<main>
 			<Banner />
-			<Chefs />
+			<Chefs chefsData={chefsData} />
 			<Testimonials />
 			<Trusted />
 			<Newsletter />

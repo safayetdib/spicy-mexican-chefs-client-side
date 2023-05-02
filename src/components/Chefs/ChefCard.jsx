@@ -1,37 +1,38 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillLike } from 'react-icons/ai';
 
-const ChefCard = () => {
+const ChefCard = ({ data }) => {
+	const { id, chef_name, chef_picture, experience, likes, num_recipes } = data;
+
 	return (
 		<li className="space-y-4 border px-4 py-6 shadow">
 			<div className="mx-auto h-24 w-24">
 				{/* PICTURE */}
 				<img
-					src="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-					className="h-full w-full rounded-full"
+					src={chef_picture}
+					className="h-full w-full rounded-full object-cover object-center"
 					alt="Chef Photo"
 				/>
 			</div>
 			<div className="space-y-2">
 				{/* NAME */}
-				<h4 className="text-2xl font-semibold text-gray-700">
-					Martiana dialan
-				</h4>
+				<h4 className="text-2xl font-semibold text-gray-700">{chef_name}</h4>
 				{/* EXPERIENCE */}
-				<p className=" text-red-500">5+ Year Experience</p>
+				<p className=" text-red-500">{experience} Year Experience</p>
 				{/* NUMBER OF RECIPES */}
-				<p className="text-gray-700">Recipes: 05</p>
+				<p className="text-gray-700">Recipes: {num_recipes}</p>
 				{/* LIKES */}
 				<p
-					className="flex items-center justify-center gap-2 text-xl text-gray-700"
+					className="flex items-center justify-center gap-2  text-gray-700"
 					title="Likes">
-					<AiFillLike /> 16
+					<AiFillLike className="text-lg" /> {likes}
 				</p>
 			</div>
 			{/* VIEW RECIPES */}
 			<Link
-				to="/chef"
+				to={`/chef/${id}`}
 				className="inline-flex items-center gap-x-1 bg-red-accent px-4 py-2 text-sm font-medium text-white duration-150 hover:bg-red-hover">
 				View Recipes
 				<svg

@@ -17,6 +17,7 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
+				loader: () => fetch('http://localhost:3000/data'),
 			},
 			{
 				path: '/login',
@@ -27,8 +28,10 @@ const router = createBrowserRouter([
 				element: <Register />,
 			},
 			{
-				path: '/chef',
+				path: '/chef/:id',
 				element: <ChefsRecipe />,
+				loader: ({ params }) =>
+					fetch(`http://localhost:3000/data/${params.id}`),
 			},
 			{
 				path: '/blogs',
