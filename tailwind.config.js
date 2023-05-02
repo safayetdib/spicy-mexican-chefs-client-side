@@ -4,9 +4,15 @@ export default {
 	theme: {
 		fontFamily: {
 			caveat: ['Caveat', 'cursive'],
-			sans: ['Work Sans', 'sans-serif'],
+			main: ['Cabin', 'sans-serif'],
 		},
-		extend: {},
+		extend: {
+			colors: {
+				'red-accent': '#f40000',
+				'red-hover': '#e60000',
+				'red-active': '#d40000',
+			},
+		},
 	},
 	plugins: [],
 };
