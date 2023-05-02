@@ -4,24 +4,24 @@ const Testimonials = () => {
 	const testimonials = [
 		{
 			avatar: 'https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg',
-			name: 'Martin escobar',
-			title: 'Founder of meta',
+			name: 'John Smith',
+			title: 'Food Critic',
 			quote:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et est hendrerit, porta nunc vitae, gravida justo. Nunc fermentum magna lorem, euismod volutpat arcu volutpat et.',
+				"The recipes on Spicy Mexican Chefs are some of the best I've ever tasted! The flavors are bold and authentic, and the instructions are easy to follow.",
 		},
 		{
 			avatar: 'https://randomuser.me/api/portraits/women/79.jpg',
-			name: 'Angela stian',
-			title: 'Product designer',
+			name: 'Maria Gonzalez',
+			title: 'Home Cook',
 			quote:
-				'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout, that the point of using Lorem Ipsum.',
+				"I've been looking for a website that has traditional Mexican recipes, and Spicy Mexican Chefs is the perfect place! The recipes are delicious and remind me of the meals my abuela used to make.",
 		},
 		{
 			avatar: 'https://randomuser.me/api/portraits/men/86.jpg',
-			name: 'Karim ahmed',
-			title: 'DevOp engineer',
+			name: 'Juan Rodriguez',
+			title: 'Chef',
 			quote:
-				'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati ',
+				"As a professional chef, I'm always looking for new and interesting recipes to try. Spicy Mexican Chefs has a great selection of unique and flavorful dishes that are sure to impress your dinner guests!",
 		},
 	];
 
