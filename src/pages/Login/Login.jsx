@@ -41,13 +41,18 @@ const Login = () => {
 						Log in
 					</button>
 				</form>
+				<div className="text-center">
+					<Link to="/" className="text-red-accent hover:text-red-hover">
+						Forgot password?
+					</Link>
+				</div>
 				<div className="relative">
 					<span className="block h-px w-full bg-gray-300"></span>
 					<p className="absolute inset-x-0 -top-2 mx-auto inline-block w-fit bg-white px-2 text-sm">
 						Or continue with
 					</p>
 				</div>
-				<div className="space-y-4 text-sm font-medium">
+				<div className="space-y-4 py-3 text-sm font-medium">
 					<button className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
 						<svg
 							className="h-5 w-5"
@@ -131,11 +136,6 @@ const Login = () => {
 						</svg>
 						Continue with Github
 					</button>
-				</div>
-				<div className="text-center">
-					<Link to="/" className="text-red-accent hover:text-red-hover">
-						Forgot password?
-					</Link>
 				</div>
 			</div>
 		</main>

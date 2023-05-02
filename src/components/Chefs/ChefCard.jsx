@@ -31,7 +31,7 @@ const ChefCard = () => {
 			</div>
 			{/* VIEW RECIPES */}
 			<Link
-				to="/"
+				to="/chef"
 				className="inline-flex items-center gap-x-1 bg-red-accent px-4 py-2 text-sm font-medium text-white duration-150 hover:bg-red-hover">
 				View Recipes
 				<svg
