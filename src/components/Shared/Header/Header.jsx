@@ -86,7 +86,7 @@ const Header = () => {
 								<Link
 									to="/register"
 									className="block bg-red-accent px-4 py-3 text-center font-medium text-white shadow hover:bg-red-hover active:bg-red-active active:shadow-none md:inline">
-									Sign in
+									Register
 								</Link>
 							</li>
 						</div>
