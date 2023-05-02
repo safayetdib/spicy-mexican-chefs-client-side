@@ -6,7 +6,7 @@ const ChefsRecipe = () => {
 	return (
 		<main>
 			<ChefDetails />
-			<section className="my-10 bg-red-500 px-4 py-10">
+			<section className="my-10 bg-red-500 px-4 pb-14 pt-10">
 				<div className="mx-auto max-w-screen-xl px-4 md:px-8">
 					<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 						<Recipe />

@@ -30,9 +30,8 @@ const Newsletter = () => {
 							</button>
 						</form>
 						<p className="mt-3 max-w-lg text-[15px] text-red-200 sm:mx-auto">
-							No spam ever, we are care about the protection of your data. Read
-							our{' '}
-							<Link className="underline" to="/">
+							No spam ever, we care about the protection of your data. Read our{' '}
+							<Link className="underline" to="/policy">
 								{' '}
 								Privacy Policy{' '}
 							</Link>

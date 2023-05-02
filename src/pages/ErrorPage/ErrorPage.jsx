@@ -8,7 +8,11 @@ const ErrorPage = () => {
 		<main>
 			<div className="mx-auto flex h-screen max-w-screen-xl items-center justify-start px-4 md:px-8">
 				<div className="mx-auto max-w-lg space-y-3 text-center">
-					<img src="/src/assets/error.jpg" alt="error" className="h-80" />
+					<img
+						src="https://img.freepik.com/free-vector/postpone-concept_23-2148494300.jpg?w=826&t=st=1683036156~exp=1683036756~hmac=9ec50466b5b5d14b0a483ac04bd21d9360e2491f9d1877a4bc8331a52a68555e"
+						alt="error"
+						className="h-80"
+					/>
 					<h3 className="font-caveat text-4xl font-semibold text-red-accent sm:text-5xl">
 						Oops!
 					</h3>
