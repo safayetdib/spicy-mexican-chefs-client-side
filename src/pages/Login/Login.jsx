@@ -112,7 +112,7 @@ const Login = () => {
 						Log in
 					</button>
 					{/* Toast */}
-					<Toaster />;
+					<Toaster />
 				</form>
 				<div className="text-center">
 					{/* FORGOT PASSWORD */}

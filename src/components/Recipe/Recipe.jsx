@@ -3,6 +3,7 @@ import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
 import React, { useState } from 'react';
 import { MdFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import toast, { Toaster } from 'react-hot-toast';
 
 const Recipe = ({ recipe }) => {
@@ -74,11 +75,10 @@ const Recipe = ({ recipe }) => {
 				{/* FAVORITE BUTTON */}
 				<button
 					onClick={handleFavorite}
-					className={`ml-auto text-3xl ${
-						favorite ? 'text-red-accent' : 'text-red-300'
-					}`}
+					title="Favorite"
+					className="ml-auto mr-2 text-3xl  text-gray-600"
 					disabled={favorite}>
-					<MdFavorite />
+					{favorite ? <AiFillHeart /> : <AiOutlineHeart />}
 				</button>
 				<Toaster />
 			</div>

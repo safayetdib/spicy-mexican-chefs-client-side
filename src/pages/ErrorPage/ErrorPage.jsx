@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link, useRouteError } from 'react-router-dom';
+import Header from '../../components/Shared/Header/Header';
+import Footer from '../../components/Shared/Footer/Footer';
 
 const ErrorPage = () => {
 	const { error, status } = useRouteError();
 
 	return (
 		<main>
-			<div className="mx-auto flex h-screen max-w-screen-xl items-center justify-start px-4 md:px-8">
+			<Header />
+			<div className="mx-auto my-32 flex max-w-screen-xl items-center justify-start px-4 md:px-8">
 				<div className="mx-auto max-w-lg space-y-3 text-center">
 					<img
 						src="https://img.freepik.com/free-vector/postpone-concept_23-2148494300.jpg?w=826&t=st=1683036156~exp=1683036756~hmac=9ec50466b5b5d14b0a483ac04bd21d9360e2491f9d1877a4bc8331a52a68555e"
@@ -38,6 +41,8 @@ const ErrorPage = () => {
 					</Link>
 				</div>
 			</div>
+
+			<Footer />
 		</main>
 	);
 };

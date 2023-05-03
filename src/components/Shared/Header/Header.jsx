@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { GiChefToque } from 'react-icons/gi';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
@@ -118,9 +118,13 @@ const Header = () => {
 						{navigation.map((item, idx) => {
 							return (
 								<li key={idx} className="text-gray-700 hover:text-red-hover">
-									<Link to={item.path} className="block">
+									<NavLink
+										to={item.path}
+										className={({ isActive }) =>
+											isActive ? 'text-red-accent' : ''
+										}>
 										{item.title}
-									</Link>
+									</NavLink>
 								</li>
 							);
 						})}
