@@ -17,7 +17,8 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
-				loader: () => fetch('http://localhost:3000/data'),
+				loader: () =>
+					fetch('https://assignment-10-server-side-alpha.vercel.app/data'),
 			},
 			{
 				path: '/login',
@@ -31,7 +32,9 @@ const router = createBrowserRouter([
 				path: '/chef/:id',
 				element: <ChefsRecipe />,
 				loader: ({ params }) =>
-					fetch(`http://localhost:3000/data/${params.id}`),
+					fetch(
+						`https://assignment-10-server-side-alpha.vercel.app/data/${params.id}`
+					),
 			},
 			{
 				path: '/blogs',
