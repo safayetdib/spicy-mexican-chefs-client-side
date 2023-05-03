@@ -1,12 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GiChefToque } from 'react-icons/gi';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
 
 const Header = () => {
-	const [state, setState] = useState(false);
 	const { user, logout } = useContext(AuthContext);
+
+	const [state, setState] = useState(false);
 
 	const navigation = [
 		{ title: 'Home', path: '/' },
@@ -14,6 +15,55 @@ const Header = () => {
 		{ title: 'Gallery', path: '/gallery' },
 		{ title: 'Blogs', path: '/blogs' },
 	];
+
+	const navUser = !user ? (
+		<>
+			{/* LOGIN BUTTON */}
+			<li>
+				<Link
+					to="/login"
+					className="block border py-3 text-center text-gray-700 hover:text-red-hover md:border-none">
+					Log in
+				</Link>
+			</li>
+			{/* REGISTER BUTTON */}
+			<li>
+				<Link
+					to="/register"
+					className="block bg-red-accent px-4 py-3 text-center font-medium text-white shadow hover:bg-red-hover active:bg-red-active active:shadow-none md:inline">
+					Register
+				</Link>
+			</li>
+		</>
+	) : (
+		<>
+			{/* USER AVATAR */}
+			<div className="group relative my-6 h-12 w-12 md:my-0">
+				<span className="absolute -bottom-0.5 right-1 h-3 w-3 rounded-full border border-white bg-green-500"></span>
+				{user.photoURL ? (
+					<img src={user.photoURL} className="h-full w-full rounded-full" />
+				) : (
+					<span>
+						<FaUserCircle className="h-full w-full rounded-full text-gray-700" />
+					</span>
+				)}
+
+				{user.displayName && (
+					<span className="absolute left-14 top-1 h-fit w-fit scale-0 rounded bg-red-100 p-2 text-base text-gray-800 group-hover:scale-100 md:left-0 md:top-14">
+						{user.displayName}
+					</span>
+				)}
+			</div>
+			{/* LOGOUT BUTTON */}
+			<li>
+				<button
+					onClick={logout}
+					className="block bg-red-accent px-4 py-3 text-center font-medium text-white shadow hover:bg-red-hover active:bg-red-active active:shadow-none md:inline">
+					Logout
+				</button>
+			</li>
+		</>
+	);
 
 	return (
 		<nav className="w-full border-b border-red-100 bg-white md:static md:border-none md:text-sm">
@@ -76,57 +126,7 @@ const Header = () => {
 						})}
 						<span className="hidden h-6 w-px bg-gray-300 md:block"></span>
 						<div className="items-center gap-x-6 space-y-3 md:flex md:space-y-0">
-							{!user ? (
-								<>
-									{/* LOGIN BUTTON */}
-									<li>
-										<Link
-											to="/login"
-											className="block border py-3 text-center text-gray-700 hover:text-red-hover md:border-none">
-											Log in
-										</Link>
-									</li>
-									{/* REGISTER BUTTON */}
-									<li>
-										<Link
-											to="/register"
-											className="block bg-red-accent px-4 py-3 text-center font-medium text-white shadow hover:bg-red-hover active:bg-red-active active:shadow-none md:inline">
-											Register
-										</Link>
-									</li>
-								</>
-							) : (
-								<>
-									{/* USER AVATAR */}
-									<div className="group relative h-12 w-12">
-										<span className="absolute -bottom-0.5 right-1 h-3 w-3 rounded-full border border-white bg-green-500"></span>
-										{user.photoURL ? (
-											<img
-												src={user.photoURL}
-												className="h-full w-full rounded-full"
-											/>
-										) : (
-											<span>
-												<FaUserCircle className="h-full w-full rounded-full text-gray-700" />
-											</span>
-										)}
-
-										{user.displayName && (
-											<span className="absolute left-14 top-1 h-fit w-fit scale-0 rounded bg-red-100 p-2 text-base text-gray-800 group-hover:scale-100 md:left-0 md:top-14">
-												{user.displayName}
-											</span>
-										)}
-									</div>
-									{/* LOGOUT BUTTON */}
-									<li>
-										<button
-											onClick={logout}
-											className="block bg-red-accent px-4 py-3 text-center font-medium text-white shadow hover:bg-red-hover active:bg-red-active active:shadow-none md:inline">
-											Logout
-										</button>
-									</li>
-								</>
-							)}
+							{navUser}
 						</div>
 					</ul>
 				</div>

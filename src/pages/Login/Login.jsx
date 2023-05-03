@@ -1,9 +1,34 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import {
+	AiOutlineWarning,
+	AiFillEye,
+	AiFillEyeInvisible,
+} from 'react-icons/ai';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
 	const { signIn } = useContext(AuthContext);
+
+	// const navigate = useNavigate();
+
+	const [showPassword, setShowPassword] = useState(false);
+	// ERRORS
+	const [error, setError] = useState('');
+
+	const notify = () =>
+		toast.success('Logged In Successfully', {
+			style: {
+				border: '1px solid #f40000',
+				padding: '16px',
+				color: '#f40000',
+			},
+			iconTheme: {
+				primary: '#f40000',
+				secondary: '#FFFAEE',
+			},
+		});
 
 	const handleLogin = (e) => {
 		e.preventDefault();
@@ -12,14 +37,18 @@ const Login = () => {
 		const email = form.email.value;
 		const password = form.password.value;
 
+		setError('');
+
 		signIn(email, password)
 			.then((res) => {
-				const userData = res.user;
-				console.log(userData);
 				form.reset();
-				// navigate(from, { replace: true });
+				setError('');
+				// navigate('/');
+				notify();
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				setError(err.message);
+			});
 	};
 
 	return (
@@ -52,21 +81,36 @@ const Login = () => {
 						/>
 					</div>
 					{/* PASSWORD */}
-					<div className="mt-4">
+					<div className="relative mt-4">
 						<label className="font-medium">Password</label>
 						<input
-							type="password"
+							type={!showPassword ? 'password' : 'text'}
 							name="password"
 							required
-							className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-red-accent"
+							className=" mt-2 w-full rounded-lg border bg-transparent py-2 pl-3 pr-10 text-gray-500 shadow-sm outline-none focus:border-red-accent"
 						/>
+
+						<button
+							onClick={() => setShowPassword(!showPassword)}
+							type="button"
+							className="absolute bottom-3 right-3 text-xl text-gray-500 hover:text-gray-700">
+							{showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+						</button>
 					</div>
+					{/* ERROR MESSAGE */}
+					{error && (
+						<p className="mt-6 flex items-center justify-center gap-2 rounded-lg border border-red-300 bg-red-100 p-2 text-center text-red-accent">
+							<AiOutlineWarning className="text-lg" /> {error}
+						</p>
+					)}
 					{/* LOGIN BUTTON */}
 					<button
 						type="submit"
-						className="mt-6 w-full rounded-lg bg-red-accent px-4 py-2 font-medium text-white duration-150 hover:bg-red-hover active:bg-red-active">
+						className="mt-8 w-full rounded-lg bg-red-accent px-4 py-2 font-medium text-white duration-150 hover:bg-red-hover active:bg-red-active">
 						Log in
 					</button>
+					{/* Toast */}
+					<Toaster />;
 				</form>
 				<div className="text-center">
 					{/* FORGOT PASSWORD */}
