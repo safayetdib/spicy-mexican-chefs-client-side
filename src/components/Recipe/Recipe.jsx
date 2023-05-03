@@ -1,12 +1,33 @@
 /* eslint-disable react/prop-types */
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { MdFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Recipe = ({ recipe }) => {
 	const { recipe_name, recipe_picture, ingredients, cooking_method, rating } =
 		recipe;
+
+	const [favorite, setFavorite] = useState(false);
+
+	const handleFavorite = () => {
+		setFavorite(true);
+		notify();
+	};
+
+	const notify = () =>
+		toast.success('Successfully added to your favorites', {
+			style: {
+				border: '1px solid #f40000',
+				padding: '16px',
+				color: '#f40000',
+			},
+			iconTheme: {
+				primary: '#f40000',
+				secondary: '#FFFAEE',
+			},
+		});
 
 	return (
 		<article className="mx-auto mt-4 flex h-full max-w-md flex-col justify-between rounded-md  border bg-white shadow-lg duration-300 hover:shadow-sm">
@@ -51,9 +72,15 @@ const Recipe = ({ recipe }) => {
 				<Rating style={{ maxWidth: 100 }} value={rating} readOnly />
 				<p>{rating}</p>
 				{/* FAVORITE BUTTON */}
-				<div className="ml-auto text-3xl text-red-accent">
+				<button
+					onClick={handleFavorite}
+					className={`ml-auto text-3xl ${
+						favorite ? 'text-red-accent' : 'text-red-300'
+					}`}
+					disabled={favorite}>
 					<MdFavorite />
-				</div>
+				</button>
+				<Toaster />
 			</div>
 		</article>
 	);

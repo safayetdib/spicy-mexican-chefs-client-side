@@ -14,6 +14,9 @@ const ChefsRecipe = () => {
 			<ChefDetails chefsRecipeData={chefsRecipeData} />
 			<section className="my-10 bg-red-500 px-4 pb-14 pt-10">
 				<div className="mx-auto max-w-screen-xl px-4 md:px-8">
+					<h3 className="mb-6 text-center font-caveat text-5xl font-extrabold text-red-50">
+						Recipes of {chefsRecipeData.chef_name}
+					</h3>
 					<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 						{recipes.map((recipe, index) => (
 							<Recipe key={index} recipe={recipe} />

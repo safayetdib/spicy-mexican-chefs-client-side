@@ -7,6 +7,7 @@ import Register from '../../pages/Register/Register';
 import ChefsRecipe from '../../pages/ChefsRecipe/ChefsRecipe';
 import Blogs from '../../pages/Blogs/Blogs';
 import ErrorPage from '../../pages/ErrorPage/ErrorPage';
+import PrivateRoute from '../privateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
 	{
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/chef/:id',
-				element: <ChefsRecipe />,
+				element: (
+					<PrivateRoute>
+						<ChefsRecipe />
+					</PrivateRoute>
+				),
 				loader: ({ params }) =>
 					fetch(
 						`https://assignment-10-server-side-alpha.vercel.app/data/${params.id}`

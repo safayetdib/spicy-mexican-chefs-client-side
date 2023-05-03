@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import {
 	AiOutlineWarning,
@@ -11,7 +11,9 @@ import toast, { Toaster } from 'react-hot-toast';
 const Login = () => {
 	const { signIn } = useContext(AuthContext);
 
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
+	const location = useLocation();
+	const from = location.state?.from?.pathname || '/';
 
 	const [showPassword, setShowPassword] = useState(false);
 	// ERRORS
@@ -43,8 +45,8 @@ const Login = () => {
 			.then((res) => {
 				form.reset();
 				setError('');
-				// navigate('/');
 				notify();
+				navigate(from, { replace: true });
 			})
 			.catch((err) => {
 				setError(err.message);

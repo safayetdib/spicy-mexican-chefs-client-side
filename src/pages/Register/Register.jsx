@@ -10,7 +10,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
 	const { createUser, updateUserData } = useContext(AuthContext);
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const [showPassword, setShowPassword] = useState(false);
 	// ERRORS
@@ -56,8 +56,8 @@ const Register = () => {
 
 				form.reset();
 				setError('');
-				// navigate('/');
 				notify();
+				navigate('/');
 			})
 			.catch((err) => {
 				setError(err.message);
