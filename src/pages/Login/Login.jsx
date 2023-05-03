@@ -16,6 +16,7 @@ const Login = () => {
 			.then((res) => {
 				const userData = res.user;
 				console.log(userData);
+				form.reset();
 				// navigate(from, { replace: true });
 			})
 			.catch((err) => console.log(err));

@@ -102,7 +102,7 @@ const Header = () => {
 										<span className="absolute -bottom-0.5 right-1 h-3 w-3 rounded-full border border-white bg-green-500"></span>
 										{user.photoURL ? (
 											<img
-												src="https://randomuser.me/api/portraits/men/86.jpg"
+												src={user.photoURL}
 												className="h-full w-full rounded-full"
 											/>
 										) : (
@@ -110,9 +110,12 @@ const Header = () => {
 												<FaUserCircle className="h-full w-full rounded-full text-gray-700" />
 											</span>
 										)}
-										<span className="absolute left-14 top-2 h-fit w-fit scale-0 rounded bg-gray-700 p-2 text-xs text-white group-hover:scale-100 md:-left-6 md:top-14">
-											{user.email}
-										</span>
+
+										{user.displayName && (
+											<span className="absolute left-14 top-1 h-fit w-fit scale-0 rounded bg-red-100 p-2 text-base text-gray-800 group-hover:scale-100 md:left-0 md:top-14">
+												{user.displayName}
+											</span>
+										)}
 									</div>
 									{/* LOGOUT BUTTON */}
 									<li>

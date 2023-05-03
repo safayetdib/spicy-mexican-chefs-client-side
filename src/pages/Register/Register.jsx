@@ -1,14 +1,16 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Register = () => {
-	const { createUser } = useContext(AuthContext);
+	const { createUser, updateUserData } = useContext(AuthContext);
 
 	const [accepted, setAccepted] = useState(false);
 	const handleCheckbox = (e) => {
 		setAccepted(e.target.checked);
 	};
+
+	const navigate = useNavigate();
 
 	const handleRegister = (e) => {
 		e.preventDefault();
@@ -23,8 +25,15 @@ const Register = () => {
 			.then((res) => {
 				const createdUser = res.user;
 				console.log(createdUser);
+
+				updateUserData(name, photo)
+					.then()
+					.catch((err) => console.log(err));
 			})
 			.catch((err) => console.log(err));
+
+		form.reset();
+		navigate('/');
 	};
 
 	return (
