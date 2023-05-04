@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillLike } from 'react-icons/ai';
+import LazyLoad from 'react-lazy-load';
 
 const ChefCard = ({ data }) => {
 	const { id, chef_name, chef_picture, experience, likes, num_recipes } = data;
@@ -10,11 +11,13 @@ const ChefCard = ({ data }) => {
 		<li className="space-y-4 border px-4 py-6 shadow">
 			<div className="mx-auto h-24 w-24">
 				{/* PICTURE */}
-				<img
-					src={chef_picture}
-					className="h-full w-full rounded-full object-cover object-center"
-					alt="Chef Photo"
-				/>
+				<LazyLoad height={`100%`} width={`100%`} threshold={0.95}>
+					<img
+						src={chef_picture}
+						className="h-full w-full rounded-full object-cover object-center"
+						alt="Chef Photo"
+					/>
+				</LazyLoad>
 			</div>
 			<div className="space-y-2">
 				{/* NAME */}

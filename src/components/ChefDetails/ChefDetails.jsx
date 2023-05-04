@@ -1,6 +1,7 @@
 import React from 'react';
 import { AiFillLike } from 'react-icons/ai';
 import { GiCook, GiCampCookingPot } from 'react-icons/gi';
+import LazyLoad from 'react-lazy-load';
 
 const ChefDetails = ({ chefsRecipeData }) => {
 	const { chef_name, chef_picture, short_bio, experience, likes, num_recipes } =
@@ -13,11 +14,13 @@ const ChefDetails = ({ chefsRecipeData }) => {
 			 bg-red-50 p-4 md:flex">
 				<div className="md:w-1/2">
 					{/* PICTURE */}
-					<img
-						src={chef_picture}
-						className="h-96 w-full rounded object-cover object-center"
-						alt={chef_name}
-					/>
+					<LazyLoad height={`100%`} width={`100%`} threshold={0.95}>
+						<img
+							src={chef_picture}
+							className="h-96 w-full rounded object-cover object-center"
+							alt={chef_name}
+						/>
+					</LazyLoad>
 				</div>
 				<div className="space-y-4 md:w-1/2">
 					{/* NAME */}

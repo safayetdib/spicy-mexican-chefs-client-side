@@ -9,8 +9,13 @@ import {
 import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
-	const { createUser, updateUserData, signInWithGoogle, signInWithGithub } =
-		useContext(AuthContext);
+	const {
+		setUser,
+		createUser,
+		updateUserData,
+		signInWithGoogle,
+		signInWithGithub,
+	} = useContext(AuthContext);
 
 	const navigate = useNavigate();
 	const location = useLocation();

@@ -1,10 +1,10 @@
 # Spicy Mexican Chefs
 
-Welcome to Spicy Mexican Chefs! This website showcases delicious Mexican recipes from talented chefs. You can browse recipes by chef, learn more about the chefs who created your favorite recipes, and create an account to see ches details and recipes, save your favorite recipes, chefs, see ratings and likes.
+Welcome to Spicy Mexican Chefs! This website showcases delicious Mexican recipes from talented chefs. You can browse recipes by chef, learn more about the chefs who created your favorite recipes, and create an account to see chefs details and recipes, save your favorite recipes, chefs, see ratings and likes.
 
 ## Features
 
-- Browse recipes by chef,
+- Browse recipes by chef
 - Learn more about the chefs who created your favorite recipes, including their bio, picture, ratings and likes
 - Create an account and login to see and save your favorite recipes, chefs, and leave comments and ratings
 - Sign in with your Gmail or GitHub account for a seamless experience
