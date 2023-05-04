@@ -117,7 +117,7 @@ const Header = () => {
 										)}
 
 										{user.displayName && (
-											<span className="absolute left-14 top-1 h-fit w-fit scale-0 rounded bg-red-100 p-2 text-base text-gray-800 group-hover:scale-100 md:left-0 md:top-14">
+											<span className="absolute left-14 top-1 h-fit min-w-max scale-0 rounded bg-red-100 p-2 text-center text-base text-gray-800 group-hover:scale-100 md:left-0 md:top-14">
 												{user.displayName}
 											</span>
 										)}
