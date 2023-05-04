@@ -47,7 +47,7 @@ const Blogs = () => {
 					)}
 				</Pdf>
 			</div>
-			<div ref={ref} className="mx-auto mt-12 max-w-screen-xl px-12">
+			<div ref={ref} className="mx-auto mt-12 max-w-screen-xl px-4 md:px-12">
 				{blogList.map((item, idx) => (
 					<BlogCard key={idx} blog={item} idx={idx} />
 				))}

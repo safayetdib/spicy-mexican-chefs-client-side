@@ -13,7 +13,7 @@ const ChefsRecipe = () => {
 		<main>
 			<ChefDetails chefsRecipeData={chefsRecipeData} />
 			<section className="my-10 bg-red-400 px-4 pb-14 pt-10">
-				<div className="mx-auto max-w-screen-xl px-4 md:px-8">
+				<div className="mx-auto max-w-screen-xl md:px-8">
 					<h3 className="mb-6 text-center font-caveat text-6xl font-extrabold text-white">
 						Recipes of {chefsRecipeData.chef_name}
 					</h3>
