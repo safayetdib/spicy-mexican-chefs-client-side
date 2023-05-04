@@ -9,13 +9,8 @@ import {
 import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
-	const {
-		setUser,
-		createUser,
-		updateUserData,
-		signInWithGoogle,
-		signInWithGithub,
-	} = useContext(AuthContext);
+	const { createUser, updateUserData, signInWithGoogle, signInWithGithub } =
+		useContext(AuthContext);
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -58,10 +53,11 @@ const Register = () => {
 		}
 
 		createUser(email, password)
-			.then((res) => {
+			.then(() => {
 				updateUserData(name, photo)
 					.then()
 					.catch((err) => setError(err.message));
+
 				form.reset();
 				setError('');
 				notify();
@@ -74,7 +70,7 @@ const Register = () => {
 
 	const handleGoogleSignIn = () => {
 		signInWithGoogle()
-			.then((res) => {
+			.then(() => {
 				setError('');
 				notify();
 				navigate(from, { replace: true });
@@ -84,7 +80,7 @@ const Register = () => {
 
 	const handleGithubSignIn = () => {
 		signInWithGithub()
-			.then((res) => {
+			.then(() => {
 				setError('');
 				notify();
 				navigate(from, { replace: true });

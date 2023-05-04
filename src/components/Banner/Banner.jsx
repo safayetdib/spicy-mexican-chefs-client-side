@@ -7,7 +7,7 @@ const Banner = () => {
 				<div className="max-w-xl flex-none space-y-5">
 					{/* Join */}
 					<Link
-						to="/blogs"
+						to="/register"
 						className="inline-flex items-center gap-x-4 rounded-full border bg-white p-1 pr-4 text-sm font-medium duration-150 hover:border-gray-500">
 						<span className="inline-block rounded-full bg-red-accent px-3 py-1 text-white">
 							New

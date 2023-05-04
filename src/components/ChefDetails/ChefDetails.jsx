@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { AiFillLike } from 'react-icons/ai';
 import { GiCook, GiCampCookingPot } from 'react-icons/gi';

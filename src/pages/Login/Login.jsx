@@ -17,7 +17,6 @@ const Login = () => {
 	const from = location.state?.from?.pathname || '/';
 
 	const [showPassword, setShowPassword] = useState(false);
-	// ERRORS
 	const [error, setError] = useState('');
 
 	const notify = () =>

@@ -10,9 +10,9 @@ const Newsletter = () => {
 							Spice Up Your Inbox
 						</h3>
 						<p className="leading-relaxed text-red-100">
-							Don't miss out on our latest news, events, and promotions - sign
-							up for our newsletter today and stay connected with Spicy Mexican
-							Chefs
+							Don&apos;t miss out on our latest news, events, and promotions -
+							sign up for our newsletter today and stay connected with Spicy
+							Mexican Chefs
 						</p>
 					</div>
 					<div className="mt-6">
@@ -31,19 +31,13 @@ const Newsletter = () => {
 						</form>
 						<p className="mt-3 max-w-lg text-[15px] text-red-200 sm:mx-auto">
 							No spam ever, we care about the protection of your data. Read our{' '}
-							<Link className="underline" to="/policy">
+							<Link className="underline" to="/blogs">
 								{' '}
 								Privacy Policy{' '}
 							</Link>
 						</p>
 					</div>
 				</div>
-				{/* <div
-					className="absolute inset-0 h-full w-full"
-					style={{
-						background:
-							'linear-gradient(268.24deg, rgba(59, 130, 246, 0.76) 50%, rgba(59, 130, 246, 0.545528) 80.61%, rgba(55, 48, 163, 0) 117.35%)',
-					}}></div> */}
 			</div>
 		</section>
 	);

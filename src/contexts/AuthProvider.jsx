@@ -13,33 +13,42 @@ import {
 } from 'firebase/auth';
 import app from '../utils/firebase/firebase.config';
 
-export const AuthContext = createContext(null);
-
 const auth = getAuth(app);
-
 const googleAuthProvider = new GoogleAuthProvider();
 const githubAuthProvider = new GithubAuthProvider();
+
+export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 
+	// REGISTER
 	const createUser = (email, password) => {
 		setLoading(true);
 		return createUserWithEmailAndPassword(auth, email, password);
 	};
 
+	// ADD NAME AND PHOTO URL
+	const updateUserData = (userName, photoUrl) => {
+		return updateProfile(auth.currentUser, {
+			displayName: userName,
+			photoURL: photoUrl,
+		});
+	};
+
+	// SIGN IN
 	const signIn = (email, password) => {
 		setLoading(true);
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
-	// GOOGLE
+	// GOOGLE SIGN IN
 	const signInWithGoogle = () => {
 		return signInWithPopup(auth, googleAuthProvider);
 	};
 
-	// GITHUB
+	// GITHUB SIGN IN
 	const signInWithGithub = () => {
 		return signInWithPopup(auth, githubAuthProvider);
 	};
@@ -53,13 +62,7 @@ const AuthProvider = ({ children }) => {
 		return () => unsubscribe();
 	}, []);
 
-	const updateUserData = (userName, photoUrl) => {
-		return updateProfile(auth.currentUser, {
-			displayName: userName,
-			photoURL: photoUrl,
-		});
-	};
-
+	// LOGOUT
 	const logout = () => {
 		setLoading(true);
 		return signOut(auth);

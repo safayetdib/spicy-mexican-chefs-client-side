@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const BlogCard = ({ blog, idx }) => {
 	return (
 		<article className="mb-8 rounded-xl bg-gray-100 p-10 text-gray-800 shadow-md">
