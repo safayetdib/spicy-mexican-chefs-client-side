@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import {
 	AiOutlineWarning,
@@ -9,7 +9,8 @@ import {
 import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
-	const { createUser, updateUserData } = useContext(AuthContext);
+	const { createUser, updateUserData, signInWithGoogle, signInWithGithub } =
+		useContext(AuthContext);
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -46,7 +47,7 @@ const Register = () => {
 		setError('');
 		setPassError('');
 
-		if (password && password.length < 5) {
+		if (password && password.length < 6) {
 			setPassError('Password must be 6 (six) characters long');
 			return;
 		}
@@ -56,7 +57,6 @@ const Register = () => {
 				updateUserData(name, photo)
 					.then()
 					.catch((err) => setError(err.message));
-
 				form.reset();
 				setError('');
 				notify();
@@ -65,6 +65,26 @@ const Register = () => {
 			.catch((err) => {
 				setError(err.message);
 			});
+	};
+
+	const handleGoogleSignIn = () => {
+		signInWithGoogle()
+			.then((res) => {
+				setError('');
+				notify();
+				navigate(from, { replace: true });
+			})
+			.catch((err) => setError(err.message));
+	};
+
+	const handleGithubSignIn = () => {
+		signInWithGithub()
+			.then((res) => {
+				setError('');
+				notify();
+				navigate(from, { replace: true });
+			})
+			.catch((err) => setError(err.message));
 	};
 
 	return (
@@ -165,7 +185,9 @@ const Register = () => {
 				</div>
 				<div className="space-y-4 py-3 text-sm font-medium">
 					{/* GOOGLE SIGN IN */}
-					<button className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
+					<button
+						onClick={handleGoogleSignIn}
+						className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
 						<svg
 							className="h-5 w-5"
 							viewBox="0 0 48 48"
@@ -198,7 +220,9 @@ const Register = () => {
 						Continue with Google
 					</button>
 					{/* GITHUB SIGN IN */}
-					<button className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
+					<button
+						onClick={handleGithubSignIn}
+						className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
 						<svg
 							className="h-5 w-5"
 							viewBox="0 0 48 48"

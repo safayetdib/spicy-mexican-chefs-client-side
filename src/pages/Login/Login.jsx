@@ -9,7 +9,8 @@ import {
 import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
-	const { signIn } = useContext(AuthContext);
+	const { signIn, signInWithGoogle, signInWithGithub } =
+		useContext(AuthContext);
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -51,6 +52,26 @@ const Login = () => {
 			.catch((err) => {
 				setError(err.message);
 			});
+	};
+
+	const handleGoogleSignIn = () => {
+		signInWithGoogle()
+			.then((res) => {
+				setError('');
+				notify();
+				navigate(from, { replace: true });
+			})
+			.catch((err) => setError(err.message));
+	};
+
+	const handleGithubSignIn = () => {
+		signInWithGithub()
+			.then((res) => {
+				setError('');
+				notify();
+				navigate(from, { replace: true });
+			})
+			.catch((err) => setError(err.message));
 	};
 
 	return (
@@ -128,7 +149,9 @@ const Login = () => {
 				</div>
 				<div className="space-y-4 py-3 text-sm font-medium">
 					{/* GOOGLE SIGN IN */}
-					<button className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
+					<button
+						onClick={handleGoogleSignIn}
+						className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
 						<svg
 							className="h-5 w-5"
 							viewBox="0 0 48 48"
@@ -161,7 +184,9 @@ const Login = () => {
 						Continue with Google
 					</button>
 					{/* GITHUB SIGN IN */}
-					<button className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
+					<button
+						onClick={handleGithubSignIn}
+						className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 duration-150 hover:bg-gray-50 active:bg-gray-100">
 						<svg
 							className="h-5 w-5"
 							viewBox="0 0 48 48"
