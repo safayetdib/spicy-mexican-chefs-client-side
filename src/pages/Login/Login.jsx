@@ -17,6 +17,7 @@ const Login = () => {
 	const from = location.state?.from?.pathname || '/';
 
 	const [showPassword, setShowPassword] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState('');
 
 	const notify = () =>
@@ -34,21 +35,24 @@ const Login = () => {
 
 	const handleLogin = (e) => {
 		e.preventDefault();
+		setIsLoading(true);
+		setError('');
 
 		const form = e.target;
 		const email = form.email.value;
 		const password = form.password.value;
 
-		setError('');
-
 		signIn(email, password)
 			.then((res) => {
 				form.reset();
+				setIsLoading(false);
 				setError('');
+
 				notify();
 				navigate(from, { replace: true });
 			})
 			.catch((err) => {
+				setIsLoading(false);
 				setError(err.message);
 			});
 	};
@@ -133,7 +137,11 @@ const Login = () => {
 					<button
 						type="submit"
 						className="mt-8 w-full rounded-lg bg-red-accent px-4 py-2 font-medium text-white duration-150 hover:bg-red-hover active:bg-red-active">
-						Log in
+						{!isLoading ? (
+							'Log In'
+						) : (
+							<div className="mx-auto h-6 w-6 animate-spin rounded-full border-4 border-dashed border-gray-50"></div>
+						)}
 					</button>
 					{/* Toast */}
 					<Toaster />

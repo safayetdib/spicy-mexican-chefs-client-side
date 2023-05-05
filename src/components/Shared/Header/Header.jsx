@@ -102,25 +102,27 @@ const Header = () => {
 							) : (
 								<>
 									{/* USER AVATAR */}
-									<div className="group relative my-6 h-12 w-12 md:my-0">
+									<Link
+										to="/user"
+										className="group relative my-3 inline-block h-12 w-12 md:my-0">
 										<span className="absolute -bottom-0.5 right-1 h-3 w-3 rounded-full border border-white bg-green-500"></span>
 										{user.photoURL ? (
 											<img
 												src={user.photoURL}
-												className="h-full w-full rounded-full bg-red-300"
+												className="h-full w-full rounded-full border-2 bg-red-300 group-hover:border-gray-500"
 											/>
 										) : (
 											<span>
-												<FaUserCircle className="h-full w-full rounded-full text-gray-700" />
+												<FaUserCircle className="h-full w-full rounded-full border-2 text-gray-700 group-hover:border-gray-500" />
 											</span>
 										)}
 
 										{user.displayName && (
-											<span className="absolute left-14 top-1 h-fit min-w-max scale-0 rounded bg-red-100 p-2 text-center text-base text-gray-800 group-hover:scale-100 md:left-0 md:top-14">
+											<span className="absolute left-14 top-1 h-fit min-w-max scale-0 rounded border bg-gray-700 p-2 text-center text-base text-gray-100 shadow-lg group-hover:scale-100 md:left-0 md:top-14">
 												{user.displayName}
 											</span>
 										)}
-									</div>
+									</Link>
 									{/* LOGOUT BUTTON */}
 									<li>
 										<button

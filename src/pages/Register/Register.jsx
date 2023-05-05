@@ -9,8 +9,16 @@ import {
 import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
-	const { createUser, updateUserData, signInWithGoogle, signInWithGithub } =
-		useContext(AuthContext);
+	const {
+		createUser,
+		signIn,
+		updateUserData,
+		signInWithGoogle,
+		signInWithGithub,
+		logout,
+	} = useContext(AuthContext);
+
+	const [isLoading, setIsLoading] = useState(false);
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -37,6 +45,7 @@ const Register = () => {
 	// HANDLE REGISTER
 	const handleRegister = (e) => {
 		e.preventDefault();
+		setIsLoading(true);
 
 		const form = e.target;
 		const name = form.name.value;
@@ -54,17 +63,19 @@ const Register = () => {
 
 		createUser(email, password)
 			.then(() => {
-				updateUserData(name, photo)
-					.then()
-					.catch((err) => setError(err.message));
+				updateNameAndPhoto(name, photo);
+				logout();
+				signIn(email, password);
 
 				form.reset();
 				setError('');
+				setIsLoading(false);
 				notify();
 				navigate(from, { replace: true });
 			})
 			.catch((err) => {
 				setError(err.message);
+				setIsLoading(false);
 			});
 	};
 
@@ -86,6 +97,12 @@ const Register = () => {
 				navigate(from, { replace: true });
 			})
 			.catch((err) => setError(err.message));
+	};
+
+	const updateNameAndPhoto = (name, url) => {
+		updateUserData(name, url).then(() => {
+			navigate('/');
+		});
 	};
 
 	return (
@@ -177,7 +194,11 @@ const Register = () => {
 					<button
 						type="submit"
 						className={`mt-8 w-full rounded-lg bg-red-accent px-4 py-2 font-medium text-white duration-150 hover:bg-red-hover active:bg-red-active `}>
-						Submit
+						{!isLoading ? (
+							'Submit'
+						) : (
+							<div className="mx-auto h-6 w-6 animate-spin rounded-full border-4 border-dashed border-gray-50"></div>
+						)}
 					</button>
 					<Toaster />
 				</form>

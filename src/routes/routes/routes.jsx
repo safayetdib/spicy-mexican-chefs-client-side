@@ -9,6 +9,7 @@ import Blogs from '../../pages/Blogs/Blogs';
 import ErrorPage from '../../pages/ErrorPage/ErrorPage';
 import PrivateRoute from '../privateRoute/PrivateRoute';
 import AboutUs from '../../pages/AboutUs/AboutUs';
+import UserDetails from '../../pages/UserDetails/UserDetails';
 
 const router = createBrowserRouter([
 	{
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
 			{
 				path: '/blogs',
 				element: <Blogs />,
+			},
+			{
+				path: '/user',
+				element: <UserDetails />,
 			},
 		],
 	},
