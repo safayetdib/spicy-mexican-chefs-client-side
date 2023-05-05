@@ -6,12 +6,11 @@ const Footer = () => {
 	const navigation = [
 		{ title: 'Home', path: '/' },
 		{ title: 'About Us', path: '/about' },
-		{ title: 'Gallery', path: '/gallery' },
 		{ title: 'Blogs', path: '/blogs' },
 	];
 
 	return (
-		<footer className="mx-auto max-w-screen-xl bg-white px-4 py-5 text-sm font-medium text-gray-600 md:px-8">
+		<footer className="mx-auto mt-8 max-w-screen-xl bg-white px-4 py-5 text-sm font-medium text-gray-600 md:px-8">
 			<div className="max-w-lg sm:mx-auto sm:text-center">
 				{/* LOGO */}
 				<Link

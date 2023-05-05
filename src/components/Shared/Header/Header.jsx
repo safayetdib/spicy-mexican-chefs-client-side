@@ -12,7 +12,6 @@ const Header = () => {
 	const navigation = [
 		{ title: 'Home', path: '/' },
 		{ title: 'About Us', path: '/about' },
-		{ title: 'Gallery', path: '/gallery' },
 		{ title: 'Blogs', path: '/blogs' },
 	];
 

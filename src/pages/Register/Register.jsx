@@ -119,7 +119,9 @@ const Register = () => {
 					</div>
 					{/* EMAIL */}
 					<div className="mt-4">
-						<label className="font-medium">Email</label>
+						<label className="font-medium">
+							Email <span>*</span>
+						</label>
 						<input
 							type="email"
 							name="email"
@@ -129,7 +131,9 @@ const Register = () => {
 					</div>
 					{/* PASSWORD */}
 					<div className="relative mt-4">
-						<label className="font-medium">Password</label>
+						<label className="font-medium">
+							Password <span>*</span>
+						</label>
 						<input
 							type={!showPassword ? 'password' : 'text'}
 							name="password"
