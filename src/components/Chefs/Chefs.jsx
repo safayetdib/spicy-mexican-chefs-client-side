@@ -3,7 +3,7 @@ import ChefCard from './ChefCard';
 
 const Chefs = ({ chefsData }) => {
 	return (
-		<section className="py-14">
+		<section id="chefs-section" className="py-14">
 			<div className="mx-auto max-w-screen-xl px-4 text-center md:px-8">
 				<div className="mx-auto max-w-xl">
 					<h3 className="text-3xl font-semibold text-gray-800 sm:text-4xl">

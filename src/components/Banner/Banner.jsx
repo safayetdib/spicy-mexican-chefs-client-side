@@ -6,8 +6,8 @@ const Banner = () => {
 			<div className="mx-auto max-w-screen-xl gap-12 overflow-hidden px-4 py-28 text-gray-600 md:flex md:px-8">
 				<div className="max-w-xl flex-none space-y-5">
 					{/* Join */}
-					<Link
-						to="/register"
+					<a
+						href="#chefs-section"
 						className="inline-flex items-center gap-x-4 rounded-full border bg-white p-1 pr-4 text-sm font-medium duration-150 hover:border-gray-500">
 						<span className="inline-block rounded-full bg-red-accent px-3 py-1 text-white">
 							New
@@ -26,7 +26,7 @@ const Banner = () => {
 								/>
 							</svg>
 						</p>
-					</Link>
+					</a>
 					<h1 className="text-4xl font-extrabold text-white sm:text-5xl">
 						Experience the Authentic Flavors of Mexico
 					</h1>
@@ -37,8 +37,8 @@ const Banner = () => {
 					</p>
 					<div className="flex items-center gap-x-3 sm:text-sm">
 						{/* GET STARTED BUTTON */}
-						<Link
-							to="/login"
+						<a
+							href="#chefs-section"
 							className="flex items-center justify-center gap-x-1 border border-white bg-white px-4 py-2 font-medium text-black duration-150 hover:border-gray-500 md:inline-flex">
 							Get started
 							<svg
@@ -52,7 +52,7 @@ const Banner = () => {
 									clipRule="evenodd"
 								/>
 							</svg>
-						</Link>
+						</a>
 					</div>
 				</div>
 			</div>
